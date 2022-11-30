@@ -12,7 +12,7 @@ public class Web {
 
         ChromeOptions chromeOptions = new ChromeOptions();
 
-        chromeOptions.setHeadless(false);
+        chromeOptions.setHeadless(true);
 
         WebDriver navegador = new ChromeDriver(chromeOptions);
 

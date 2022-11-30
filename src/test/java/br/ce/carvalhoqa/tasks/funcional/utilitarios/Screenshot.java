@@ -29,7 +29,7 @@ public class Screenshot {
     public static String pastaArquivoScreenshot(){
         Path currentRelativePath = Paths.get("");
         String path = currentRelativePath.toAbsolutePath().toString();
-        return path +"\\src\\test\\java\\\\br\\ce\\carvalhoqa\\taks\\funcional\\test-report\\";
+        return path +"\\src\\test\\java\\\\br\\ce\\carvalhoqa\\tasks\\funcional\\test-report\\";
     }
 
     public static void capturarScreenShot(WebDriver navegador, String nomeArquivo){

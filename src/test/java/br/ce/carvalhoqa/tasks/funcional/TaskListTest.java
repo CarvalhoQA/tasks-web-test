@@ -1,9 +1,11 @@
 package br.ce.carvalhoqa.tasks.funcional;
 
+import br.ce.carvalhoqa.tasks.funcional.utilitarios.Screenshot;
 import org.openqa.selenium.WebDriver;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.After;
 import org.junit.Test;
 
 import br.ce.carvalhoqa.tasks.funcional.pages.AddPage;
@@ -30,6 +32,7 @@ public class TaskListTest {
         addPage.clicarSave();
 
         Assert.assertEquals(tasksPage.obterMensagemSucesso(), Constantes.MSG_CADASTRO_SUCESSO);
+        Screenshot.capturarScreenShot(navegador,"adicionarTask");
     }
 
     @Test
@@ -43,6 +46,7 @@ public class TaskListTest {
         addPage.clicarSave();
 
         Assert.assertEquals(addPage.obterMensagemDataInvalida(), Constantes.ERRO_MSG_DATA_INVALIDA);
+        Screenshot.capturarScreenShot(navegador,"adicionarTaskParametroDataInvalido");
     }
 
     @Test
@@ -55,5 +59,11 @@ public class TaskListTest {
         addPage.clicarSave();
 
         Assert.assertEquals(addPage.obterMensagemDataNaoInformada(), Constantes.ERRO_MSG_DATA_NAO_INFORMADA);
+        Screenshot.capturarScreenShot(navegador,"adicionarTaskParametroDataNaoInformado");
+    }
+
+    @After
+    public void tearDown(){
+        navegador.quit();
     }
 }
