@@ -13,11 +13,13 @@ import br.ce.carvalhoqa.tasks.funcional.pages.TasksPage;
 import br.ce.carvalhoqa.tasks.funcional.utilitarios.Constantes;
 import br.ce.carvalhoqa.tasks.funcional.utilitarios.Web;
 
+import java.net.MalformedURLException;
+
 public class TaskListTest {
     private WebDriver navegador;
 
     @Before
-    public void setUp(){
+    public void setUp() throws MalformedURLException {
         navegador = Web.createChromeDriver();
     }
 
@@ -60,6 +62,18 @@ public class TaskListTest {
 
         Assert.assertEquals(addPage.obterMensagemDataNaoInformada(), Constantes.ERRO_MSG_DATA_NAO_INFORMADA);
         Screenshot.capturarScreenShot(navegador,"adicionarTaskParametroDataNaoInformado");
+    }
+
+    @Test
+    public void adicionarTaskParametroTaskNaoInformado(){
+        TasksPage tasksPage = new TasksPage(navegador);
+        tasksPage.selecionarAddTodo();
+
+        AddPage addPage = new AddPage(navegador);
+        addPage.clicarSave();
+
+        Assert.assertEquals(addPage.obterMensagemDataNaoInformada(), Constantes.ERRO_MSG_TASK_NAO_INFORMADA);
+        Screenshot.capturarScreenShot(navegador,"adicionarTaskParametroTaskNaoInformado");
     }
 
     @After
