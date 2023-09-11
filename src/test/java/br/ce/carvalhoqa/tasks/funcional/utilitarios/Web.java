@@ -13,8 +13,8 @@ public class Web {
     public static WebDriver createChromeDriver() throws MalformedURLException {
 
         DesiredCapabilities cap = DesiredCapabilities.chrome();
-        WebDriver navegador = new RemoteWebDriver(new URL("http://192.168.1.7:4444/wd/hub"), cap);
-        navegador.navigate().to("http://192.168.1.7:8001/tasks/");
+        WebDriver navegador = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
+        navegador.navigate().to("http://localhost:8001/tasks/");
         navegador.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         return navegador;
