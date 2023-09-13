@@ -1,6 +1,7 @@
 package br.ce.carvalhoqa.tasks.funcional.utilitarios;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -11,12 +12,24 @@ import java.util.concurrent.TimeUnit;
 
 public class Web {
     public static WebDriver createChromeDriver() throws MalformedURLException {
-
-        DesiredCapabilities cap = DesiredCapabilities.chrome();
-        WebDriver navegador = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
-        navegador.navigate().to("http://localhost:8001/tasks/");
+        ChromeOptions cap = new ChromeOptions();
+        WebDriver navegador = new RemoteWebDriver(new URL("http://192.168.1.8:4444/"), cap);
+        navegador.navigate().to("http://192.168.1.8:8001/tasks/");
         navegador.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         return navegador;
     }
+
+    /*public static WebDriver createChromeDriver(){
+
+        ChromeOptions chromeOptions = new ChromeOptions();
+
+        chromeOptions.setHeadless(true);
+
+        WebDriver navegador = new ChromeDriver(chromeOptions);
+
+        navegador.get("https://www.grocerycrud.com/v1.x/demo/my_boss_is_in_a_hurry/bootstrap");
+
+        return navegador;
+    }*/
 }
