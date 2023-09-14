@@ -11,23 +11,23 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class Web {
-    static boolean ambienteLocal = false;
+    static boolean chromedriverlocal = false;
 
     public static WebDriver createChromeDriver() throws MalformedURLException {
-        if (ambienteLocal == true) {
+        if (chromedriverlocal == true) {
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.setHeadless(false);
 
             WebDriver navegador = new ChromeDriver(chromeOptions);
-            navegador.get("http://192.168.1.8:8001/tasks/");
+            navegador.get("http://localhost:8001/tasks/");
 
             return navegador;
         } else {
             ChromeOptions cap = new ChromeOptions();
 
-            WebDriver navegador = new RemoteWebDriver(new URL("http://192.168.1.8:4444/"), cap);
+            WebDriver navegador = new RemoteWebDriver(new URL("http://localhost:4444/"), cap);
 
-            navegador.navigate().to("http://192.168.1.8:8001/tasks/");
+            navegador.navigate().to("http://localhost:8001/tasks/");
             navegador.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
             return navegador;
