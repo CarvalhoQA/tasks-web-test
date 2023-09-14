@@ -11,12 +11,12 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class Web {
-    static boolean chromedriverlocal = true;
+    static boolean chromedriverlocal = false;
 
     public static WebDriver createChromeDriver() throws MalformedURLException {
         if (chromedriverlocal) {
             ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.setHeadless(false);
+            chromeOptions.setHeadless(true);
 
             WebDriver navegador = new ChromeDriver(chromeOptions);
             navegador.get("http://localhost:8001/tasks");
