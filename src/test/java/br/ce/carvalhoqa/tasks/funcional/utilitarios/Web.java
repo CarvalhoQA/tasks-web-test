@@ -14,21 +14,19 @@ public class Web {
     static boolean chromedriverlocal = false;
 
     public static WebDriver createChromeDriver() throws MalformedURLException {
-        if (chromedriverlocal == true) {
+        if (chromedriverlocal) {
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.setHeadless(false);
 
             WebDriver navegador = new ChromeDriver(chromeOptions);
-            navegador.get("http://localhost:8001/tasks/");
+            navegador.get("http://localhost:8001/tasks");
 
             return navegador;
         } else {
             ChromeOptions cap = new ChromeOptions();
 
-            WebDriver navegador = new RemoteWebDriver(new URL("http://localhost:4444/"), cap);
-
-            navegador.navigate().to("http://localhost:8001/tasks/");
-            navegador.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            WebDriver navegador = new RemoteWebDriver(new URL("http://192.168.1.3:4444"), cap);
+            navegador.navigate().to("http://192.168.1.3:8001/tasks");
 
             return navegador;
         }
