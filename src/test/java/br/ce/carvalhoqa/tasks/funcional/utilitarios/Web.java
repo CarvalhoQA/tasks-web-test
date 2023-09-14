@@ -25,8 +25,8 @@ public class Web {
         } else {
             ChromeOptions cap = new ChromeOptions();
 
-            WebDriver navegador = new RemoteWebDriver(new URL("http://192.168.1.3:4444"), cap);
-            navegador.navigate().to("http://192.168.1.3:8001/tasks");
+            WebDriver navegador = new RemoteWebDriver(new URL("http://localhost:4444"), cap);
+            navegador.navigate().to("http://localhost:8001/tasks");
 
             return navegador;
         }
